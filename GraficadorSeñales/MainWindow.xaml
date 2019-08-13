@@ -1,0 +1,36 @@
+﻿<Window x:Class="GraficadorSeñales.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraficadorSeñales"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="Bisque">
+        <TextBlock HorizontalAlignment="Left" Margin="54,26,0,0" TextWrapping="Wrap" Text="Señal Senoidal" VerticalAlignment="Top" FontSize="25" />
+
+        <TextBlock HorizontalAlignment="Left" Margin="68,78,0,0" TextWrapping="Wrap" Text="Amplitud" VerticalAlignment="Top" FontSize="18" />
+        <TextBox x:Name="txtAmplitud" HorizontalAlignment="Left" Height="23" Margin="68,104,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="266"/>
+        <TextBlock HorizontalAlignment="Left" Margin="68,128,0,0" TextWrapping="Wrap" Text="Fase" VerticalAlignment="Top" FontSize="18" />
+        <TextBox x:Name="txtFase" HorizontalAlignment="Left" Height="23" Margin="68,152,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="266"/>
+        <TextBlock HorizontalAlignment="Left" Margin="68,170,0,0" TextWrapping="Wrap" Text="Frecuencia" VerticalAlignment="Top" FontSize="18" />
+        <TextBox x:Name="txtFrecuencia" HorizontalAlignment="Left" Height="23" Margin="68,194,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="266"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="486,19,0,0" TextWrapping="Wrap" Text="Tiempo Inicial" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="txtTiempoInicial" HorizontalAlignment="Left" Height="23" Margin="489,54,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="247"/>
+        <TextBlock HorizontalAlignment="Left" Margin="486,81,0,0" TextWrapping="Wrap" Text="Tiempo Final" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="txtTiempoFinal" HorizontalAlignment="Left" Height="23" Margin="489,114,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="247"/>
+        <TextBlock HorizontalAlignment="Left" Margin="486,136,0,0" TextWrapping="Wrap" Text="Frecuencia de muestro" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="txtFrecuenciaMuestreo" HorizontalAlignment="Left" Height="23" Margin="489,171,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="247"/>
+        <Button x:Name="btnGraficar" Content="GRAFICAR" HorizontalAlignment="Left" Margin="633,199,0,0" VerticalAlignment="Top" Width="100"  Height="19" Click="BtnGraficar_Click"/>
+       
+        
+        <!--ScrollViewer es un contenedor de otros controladores-->
+        <ScrollViewer HorizontalAlignment="Left" Height="187" Margin="54,222,0,0" VerticalAlignment="Top" Width="679" Background="#FFD1CCCC" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
+            <!--Para poder visualizar la linea se necesitan las primeras 2 propiedades-->
+            <Polyline Stroke="Orange"  StrokeThickness="2" Name="plnGrafica" />
+        </ScrollViewer>
+
+
+    </Grid>
+</Window>
