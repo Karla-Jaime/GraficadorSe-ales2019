@@ -30,6 +30,8 @@ namespace GraficadorSeñales
         public double evaluar(double tiempo)
         {
             double resultado;
+            //0.5*500
+           
             resultado =
                 Amplitud * Math.Sin(
                     ((2 * Math.PI * Frecuencia) *

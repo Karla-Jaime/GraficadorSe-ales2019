@@ -23,13 +23,7 @@ namespace GraficadorSeñales
     {
         public MainWindow()
         {
-            InitializeComponent();//Point es la clase que contiene a un punto de Poly
-            plnGrafica.Points.Add(new Point(0,10));
-            plnGrafica.Points.Add(new Point(20, 15));
-            plnGrafica.Points.Add(new Point(100,50));
-            plnGrafica.Points.Add(new Point(200,1));
-            plnGrafica.Points.Add(new Point(300,70));
-
+            InitializeComponent();
         }
 
         private void BtnGraficar_Click(object sender, RoutedEventArgs e)
@@ -42,15 +36,18 @@ namespace GraficadorSeñales
             double tiempoInicial = double.Parse(txtTiempoInicial.Text);
             double tiempoFinal = double.Parse(txtTiempoFinal.Text);
             
+            //Mandar a llamar 
             SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia) ;
 
             double periodoMuestreo = 1.0 / frecuenciaMuestreo;
 
+            //Borrar la grafica anterior
             plnGrafica.Points.Clear();
 
             for ( double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
             {
-
+                
+                plnGrafica.Points.Add(new Point(i, señal.evaluar(i)));                
             }
         }
     }

@@ -28,7 +28,7 @@
         <!--ScrollViewer es un contenedor de otros controladores-->
         <ScrollViewer HorizontalAlignment="Left" Height="187" Margin="54,222,0,0" VerticalAlignment="Top" Width="679" Background="#FFD1CCCC" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
             <!--Para poder visualizar la linea se necesitan las primeras 2 propiedades-->
-            <Polyline Stroke="Orange"  StrokeThickness="2" Name="plnGrafica" />
+            <Polyline Stroke="Orange"  StrokeThickness="2" Name="plnGrafica"/>
         </ScrollViewer>
 
 
