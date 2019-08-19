@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Tony Stark estaria orgulloso de esto
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,13 +42,13 @@ namespace GraficadorSeñales
 
             double periodoMuestreo = 1.0 / frecuenciaMuestreo;
 
-            //Borrar la grafica anterior
+            //Para borrar la grafica anterior
             plnGrafica.Points.Clear();
 
             for ( double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
             {
-                
-                plnGrafica.Points.Add(new Point(i, señal.evaluar(i)));                
+                //i * ancho grafica para visualizar mejor la grafica. Se escala
+                plnGrafica.Points.Add(new Point(i * scrGrafica.Width, -1 * (señal.evaluar(i) * (scrGrafica.Height /2))));      
             }
         }
     }
