@@ -45,6 +45,7 @@ namespace GraficadorSeñales
             //Para borrar la grafica anterior
             plnGrafica.Points.Clear();
 
+
             for ( double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
             {
                 //i * ancho grafica para visualizar mejor la grafica. Se escala
