@@ -37,7 +37,7 @@ namespace GraficadorSeñales
             double tiempoInicial = double.Parse(txtTiempoInicial.Text);
             double tiempoFinal = double.Parse(txtTiempoFinal.Text);
             
-            //Mandar a llamar 
+            //Mandar a llamar
             SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia) ;
 
             double periodoMuestreo = 1.0 / frecuenciaMuestreo;
