@@ -36,21 +36,35 @@ namespace GraficadorSeñales
             double frecuenciaMuestreo = double.Parse(txtFrecuenciaMuestreo.Text);
             double tiempoInicial = double.Parse(txtTiempoInicial.Text);
             double tiempoFinal = double.Parse(txtTiempoFinal.Text);
-            
+
             //Mandar a llamar
-            SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia) ;
+            SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia);
 
             double periodoMuestreo = 1.0 / frecuenciaMuestreo;
 
             //Para borrar la grafica anterior
             plnGrafica.Points.Clear();
 
-
-            for ( double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
+            for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
             {
                 //i * ancho grafica para visualizar mejor la grafica. Se escala
-                plnGrafica.Points.Add(new Point(i * scrGrafica.Width, -1 * (señal.evaluar(i) * (scrGrafica.Height /2))));      
-            }
+                //El compenente se le suma scrGrafica.Height /2 para visualizarlo en Polyline
+                
+                plnGrafica.Points.Add(adaptarCoordenadas(i, señal.evaluar(i)));
+
+            }  
+        }
+        //Nueva funcion 
+        public Point adaptarCoordenadas(double x, double y)
+        {
+          
+
+            return new Point( x * scrGrafica.Width, y * ((scrGrafica.Height / 2.0) - 25) + (scrGrafica.Height / 2.0) );
         }
     }
 }
+
+/*Its been a long day with out you my friend 
+ Halt dich and mir fest 
+
+     */

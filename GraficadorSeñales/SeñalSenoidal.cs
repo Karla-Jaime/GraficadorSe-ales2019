@@ -26,11 +26,12 @@ namespace GraficadorSeñales
             Fase = fase;
             Frecuencia = frecuencia;
         }
-
+        /*TEOREMA DE MUESTREO
+         fs = 2fmax + 1*/
         public double evaluar(double tiempo)
         {
             double resultado;
-            //0.5*500
+            //la  formula de señal S. comienza hacia arriba
            
             resultado =
                 Amplitud * Math.Sin(
@@ -38,5 +39,7 @@ namespace GraficadorSeñales
                     tiempo) + Fase);
             return resultado;
         }
+
+      
     }
 }
