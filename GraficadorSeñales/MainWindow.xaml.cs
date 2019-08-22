@@ -49,22 +49,23 @@ namespace GraficadorSeñales
             {
                 //i * ancho grafica para visualizar mejor la grafica. Se escala
                 //El compenente se le suma scrGrafica.Height /2 para visualizarlo en Polyline
-                
-                plnGrafica.Points.Add(adaptarCoordenadas(i, señal.evaluar(i)));
-
-            }  
-        }
-        //Nueva funcion 
-        public Point adaptarCoordenadas(double x, double y)
-        {
+                plnGrafica.Points.Add(adaptarCoordenadas(i, señal.evaluar(i), tiempoInicial));
+            }
+            
+            plnEjeX.Points.Clear();
+            plnEjeX.Points.Add(adaptarCoordenadas(tiempoInicial, 0.0, tiempoInicial));
+            plnEjeX.Points.Add(adaptarCoordenadas(tiempoFinal, 0.0, tiempoInicial));
           
+        }
 
-            return new Point( x * scrGrafica.Width, y * ((scrGrafica.Height / 2.0) - 25) + (scrGrafica.Height / 2.0) );
+        //Nueva funcion 
+        public Point adaptarCoordenadas(double x, double y, double tiempoInicial)
+        {
+            return new Point( (x - tiempoInicial) * scrGrafica.Width,  -y * ((scrGrafica.Height / 2.0) - 25) + (scrGrafica.Height / 2.0) );
         }
     }
 }
 
-/*Its been a long day with out you my friend 
- Halt dich and mir fest 
-
-     */
+/*
+ 
+*/

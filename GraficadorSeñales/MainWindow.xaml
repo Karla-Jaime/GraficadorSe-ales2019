@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GraficadorSeñales"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="Bisque">
+    <Grid Background="#FFFFF5EA">
         <TextBlock HorizontalAlignment="Left" Margin="54,26,0,0" TextWrapping="Wrap" Text="Señal Senoidal" VerticalAlignment="Top" FontSize="25" />
 
         <TextBlock HorizontalAlignment="Left" Margin="68,78,0,0" TextWrapping="Wrap" Text="Amplitud" VerticalAlignment="Top" FontSize="18" />
@@ -26,11 +26,11 @@
        
         
         <!--ScrollViewer es un contenedor de otros controladores. Solo puede terner un hijo-->
-        <ScrollViewer x:Name="scrGrafica" HorizontalAlignment="Left" Height="187" Margin="54,222,0,0" VerticalAlignment="Top" Width="679" Background="#FFD1CCCC" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer x:Name="scrGrafica" HorizontalAlignment="Left" Height="187" Margin="54,222,0,0" VerticalAlignment="Top" Width="679" Background="#FFFFEEEE" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
             <!--Para poder visualizar la linea se necesitan las primeras 2 propiedades-->
             <Grid>
                 <Polyline Stroke="Orange"  StrokeThickness="2" Name="plnGrafica" />
-                <Polyline Name="plnEjeX" Stroke="Black" StrokeThickness="1"/>
+                <Polyline Name="plnEjeX" Stroke="Gray" StrokeThickness="1"/>
             </Grid>
          </ScrollViewer>
     </Grid>
