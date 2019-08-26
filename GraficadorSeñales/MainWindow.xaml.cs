@@ -45,13 +45,18 @@ namespace GraficadorSeñales
             //Para borrar la grafica anterior
             plnGrafica.Points.Clear();
 
+            //para poder reuperar el valor de la señal 
             for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
             {
-                //i * ancho grafica para visualizar mejor la grafica. Se escala
-                //El compenente se le suma scrGrafica.Height /2 para visualizarlo en Polyline
-                plnGrafica.Points.Add(adaptarCoordenadas(i, señal.evaluar(i), tiempoInicial));
+                Muestra muestra = new Muestra(i, señal.evaluar(i));
+                señal.Muestras.Add(muestra);
             }
-            
+            //para graficar los puntos
+            foreach (Muestra muestra in señal.Muestras)
+            {
+                plnGrafica.Points.Add(adaptarCoordenadas(muestra.X, muestra.Y, tiempoInicial));
+            }
+
             plnEjeX.Points.Clear();
             plnEjeX.Points.Add(adaptarCoordenadas(tiempoInicial, 0.0, tiempoInicial));
             plnEjeX.Points.Add(adaptarCoordenadas(tiempoFinal, 0.0, tiempoInicial));
@@ -65,7 +70,3 @@ namespace GraficadorSeñales
         }
     }
 }
-
-/*
- 
-*/

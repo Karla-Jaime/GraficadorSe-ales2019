@@ -11,12 +11,18 @@ namespace GraficadorSeñales
         public double Amplitud { get; set; }
         public double Fase { get; set; }
         public double Frecuencia { get; set; }
+        
+        //autopro inicializar
+        public List<Muestra> Muestras { get; set; }
+               
 
         public SeñalSenoidal()
         {
             Amplitud = 1.0;
             Fase = 0.0;
             Frecuencia = 1.0;
+            //para que pueda tener elem
+            Muestras = new List<Muestra>();
         }
 
         public SeñalSenoidal(double amplitud,
@@ -25,7 +31,9 @@ namespace GraficadorSeñales
             Amplitud = amplitud;
             Fase = fase;
             Frecuencia = frecuencia;
+            Muestras = new List<Muestra>();
         }
+
         /*TEOREMA DE MUESTREO
          fs = 2fmax + 1*/
         public double evaluar(double tiempo)
