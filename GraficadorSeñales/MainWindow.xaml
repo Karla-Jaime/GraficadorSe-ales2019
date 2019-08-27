@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FFFFF5EA">
-        <TextBlock HorizontalAlignment="Left" Margin="54,26,0,0" TextWrapping="Wrap" Text="Señal Senoidal" VerticalAlignment="Top" FontSize="25" />
+        <TextBlock HorizontalAlignment="Left" Margin="54,10,0,0" TextWrapping="Wrap" Text="Señal Senoidal" VerticalAlignment="Top" FontSize="25" />
 
-        <TextBlock HorizontalAlignment="Left" Margin="68,78,0,0" TextWrapping="Wrap" Text="Amplitud" VerticalAlignment="Top" FontSize="18" />
-        <TextBox x:Name="txtAmplitud" HorizontalAlignment="Left" Height="23" Margin="68,104,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="266"/>
-        <TextBlock HorizontalAlignment="Left" Margin="68,128,0,0" TextWrapping="Wrap" Text="Fase" VerticalAlignment="Top" FontSize="18" />
-        <TextBox x:Name="txtFase" HorizontalAlignment="Left" Height="23" Margin="68,152,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="266"/>
-        <TextBlock HorizontalAlignment="Left" Margin="68,170,0,0" TextWrapping="Wrap" Text="Frecuencia" VerticalAlignment="Top" FontSize="18" />
-        <TextBox x:Name="txtFrecuencia" HorizontalAlignment="Left" Height="23" Margin="68,194,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="266"/>
+        <TextBlock HorizontalAlignment="Left" Margin="56,45,0,0" TextWrapping="Wrap" Text="Amplitud" VerticalAlignment="Top" FontSize="18" />
+        <TextBox x:Name="txtAmplitud" HorizontalAlignment="Left" Height="23" Margin="56,71,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="266"/>
+        <TextBlock HorizontalAlignment="Left" Margin="56,95,0,0" TextWrapping="Wrap" Text="Fase" VerticalAlignment="Top" FontSize="18" />
+        <TextBox x:Name="txtFase" HorizontalAlignment="Left" Height="23" Margin="56,119,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="266"/>
+        <TextBlock HorizontalAlignment="Left" Margin="56,137,0,0" TextWrapping="Wrap" Text="Frecuencia" VerticalAlignment="Top" FontSize="18" />
+        <TextBox x:Name="txtFrecuencia" HorizontalAlignment="Left" Height="23" Margin="56,161,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="266"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="486,19,0,0" TextWrapping="Wrap" Text="Tiempo Inicial" VerticalAlignment="Top" FontSize="20"/>
         <TextBox x:Name="txtTiempoInicial" HorizontalAlignment="Left" Height="23" Margin="489,54,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="247"/>
@@ -23,15 +23,19 @@
         <TextBlock HorizontalAlignment="Left" Margin="486,136,0,0" TextWrapping="Wrap" Text="Frecuencia de muestro" VerticalAlignment="Top" FontSize="20"/>
         <TextBox x:Name="txtFrecuenciaMuestreo" HorizontalAlignment="Left" Height="23" Margin="489,171,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="247"/>
         <Button x:Name="btnGraficar" Content="GRAFICAR" HorizontalAlignment="Left" Margin="633,199,0,0" VerticalAlignment="Top" Width="100"  Height="19" Click="BtnGraficar_Click"/>
-       
-        
+
+
         <!--ScrollViewer es un contenedor de otros controladores. Solo puede terner un hijo-->
-        <ScrollViewer x:Name="scrGrafica" HorizontalAlignment="Left" Height="187" Margin="54,222,0,0" VerticalAlignment="Top" Width="679" Background="#FFFFEEEE" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer x:Name="scrGrafica" HorizontalAlignment="Left" Height="187" Margin="120,222,0,0" VerticalAlignment="Top" Width="613" Background="#FFFFEEEE" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
             <!--Para poder visualizar la linea se necesitan las primeras 2 propiedades-->
             <Grid>
                 <Polyline Stroke="Orange"  StrokeThickness="2" Name="plnGrafica" />
                 <Polyline Name="plnEjeX" Stroke="Gray" StrokeThickness="1"/>
+                <Polyline x:Name="plnEjeY" Stroke="Gray" StrokeThickness="1"/>
             </Grid>
-         </ScrollViewer>
+        </ScrollViewer>
+        <TextBlock x:Name="lbllimiteInferior"  HorizontalAlignment="Right" Margin="0,393,687,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="95" TextAlignment="Right"/>
+        <TextBlock x:Name="lbllimiteSuperior"  HorizontalAlignment="Right" Margin="0,222,682,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="95" TextAlignment="Right" RenderTransformOrigin="2.379,0.625"/>
+        <TextBlock  HorizontalAlignment="Right" Margin="0,305,677,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="95" TextAlignment="Right" RenderTransformOrigin="2.379,0.625"/>
     </Grid>
 </Window>

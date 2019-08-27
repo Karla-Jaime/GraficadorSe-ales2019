@@ -42,31 +42,48 @@ namespace GraficadorSeñales
 
             double periodoMuestreo = 1.0 / frecuenciaMuestreo;
 
+            //Declarar la Amplitud Máxima
+            double amplitudMaxima = 0.0;
+
             //Para borrar la grafica anterior
             plnGrafica.Points.Clear();
 
             //para poder reuperar el valor de la señal 
             for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
             {
+                double valorMuestra = señal.evaluar(i);
+                if(Math.Abs(valorMuestra) > amplitudMaxima)
+                {
+                    amplitudMaxima = Math.Abs(valorMuestra);
+                }
                 Muestra muestra = new Muestra(i, señal.evaluar(i));
                 señal.Muestras.Add(muestra);
+
             }
             //para graficar los puntos
             foreach (Muestra muestra in señal.Muestras)
             {
-                plnGrafica.Points.Add(adaptarCoordenadas(muestra.X, muestra.Y, tiempoInicial));
+                plnGrafica.Points.Add(adaptarCoordenadas(muestra.X, muestra.Y, tiempoInicial,amplitudMaxima));
             }
 
-            plnEjeX.Points.Clear();
-            plnEjeX.Points.Add(adaptarCoordenadas(tiempoInicial, 0.0, tiempoInicial));
-            plnEjeX.Points.Add(adaptarCoordenadas(tiempoFinal, 0.0, tiempoInicial));
-          
+            lbllimiteSuperior.Text = amplitudMaxima.ToString();
+            lbllimiteInferior.Text = "-" + amplitudMaxima.ToString();
+
+            plnEjeX.Points.Clear(); 
+            plnEjeX.Points.Add(adaptarCoordenadas(tiempoInicial, 0.0, tiempoInicial, amplitudMaxima));
+            plnEjeX.Points.Add(adaptarCoordenadas(tiempoFinal, 0.0, tiempoInicial, amplitudMaxima));
+
+            plnEjeY.Points.Clear();
+            plnEjeY.Points.Add(adaptarCoordenadas(0.0, amplitudMaxima,tiempoInicial, amplitudMaxima));
+            plnEjeY.Points.Add(adaptarCoordenadas(0.0, amplitudMaxima * -1, tiempoInicial, amplitudMaxima));
+
         }
 
         //Nueva funcion 
-        public Point adaptarCoordenadas(double x, double y, double tiempoInicial)
+        public Point adaptarCoordenadas(double x, double y, double tiempoInicial, double amplitudMaxima)
         {
-            return new Point( (x - tiempoInicial) * scrGrafica.Width,  -y * ((scrGrafica.Height / 2.0) - 25) + (scrGrafica.Height / 2.0) );
+            return new Point( (x - tiempoInicial) * scrGrafica.Width, 
+                -y * ( ((scrGrafica.Height / 2.0) - 25) )/ amplitudMaxima + (scrGrafica.Height / 2.0) );
         }
     }
 }
