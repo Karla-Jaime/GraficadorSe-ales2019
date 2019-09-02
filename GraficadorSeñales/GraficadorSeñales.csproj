@@ -58,6 +58,7 @@
     <Compile Include="Muestra.cs" />
     <Compile Include="SeñalParabolica.cs" />
     <Compile Include="SeñalSenoidal.cs" />
+    <Compile Include="FuncionSigno.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

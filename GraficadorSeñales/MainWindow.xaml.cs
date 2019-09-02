@@ -39,7 +39,9 @@ namespace GraficadorSeñales
 
             //Mandar a llamar
             //SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia);
-            SeñalParabolica señal = new SeñalParabolica();
+            //SeñalParabolica señal = new SeñalParabolica();
+            FuncionSigno señal = new FuncionSigno();
+
             double periodoMuestreo = 1.0 / frecuenciaMuestreo;
 
             //Declarar la Amplitud Máxima
