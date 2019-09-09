@@ -29,18 +29,20 @@ namespace GraficadorSeñales
 
         private void BtnGraficar_Click(object sender, RoutedEventArgs e)
         {
-            //convertido de String a Variable Num
-            double amplitud = double.Parse(txtAmplitud.Text);
-            double fase = double.Parse(txtFase.Text);
-            double frecuencia = double.Parse(txtFrecuencia.Text);
+            
+            //double amplitud = Parse(txtAmplitud.Text);
+            //double fase = double.Parse(txtFase.Text);
+            //double frecuencia = double.Parse(txtFrecuencia.Text);
+
+
             double frecuenciaMuestreo = double.Parse(txtFrecuenciaMuestreo.Text);
             double tiempoInicial = double.Parse(txtTiempoInicial.Text);
             double tiempoFinal = double.Parse(txtTiempoFinal.Text);
 
             //Mandar a llamar
             //SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia);
-            //SeñalParabolica señal = new SeñalParabolica();
-            FuncionSigno señal = new FuncionSigno();
+            SeñalParabolica señal = new SeñalParabolica();
+            //FuncionSigno señal = new FuncionSigno();
 
             double periodoMuestreo = 1.0 / frecuenciaMuestreo;
 
@@ -86,6 +88,27 @@ namespace GraficadorSeñales
         {
             return new Point( (x - tiempoInicial) * scrGrafica.Width, 
                 -y * ( ((scrGrafica.Height / 2.0) - 25) )/ amplitudMaxima + (scrGrafica.Height / 2.0) );
+        }
+
+       
+
+        private void CbTipoSeñal_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            panelConfiguracion.Children.Clear();
+            switch (CbTipoSenal.SelectedIndex)
+            {
+                case 0: //Exponencial
+                   
+                    break;
+                case 1: //Senoidal
+                    panelConfiguracion.Children.Add(new ConfiguracionSeñalSenoidal());
+                    
+
+                    break;
+                default:
+                    break;
+
+            }
         }
     }
 }
