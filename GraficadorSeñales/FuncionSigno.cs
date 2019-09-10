@@ -9,9 +9,9 @@ namespace GraficadorSeñales
 
     
 
-    class FuncionSigno
+    class FuncionSigno : Señal
     {
-        public List<Muestra> Muestras { get; set; }
+       
 
         public FuncionSigno()
         {
@@ -19,7 +19,7 @@ namespace GraficadorSeñales
         }
        
 
-        public double evaluar(double tiempo)
+        override public double evaluar(double tiempo)
         {
             double resultado;
 

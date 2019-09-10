@@ -6,23 +6,21 @@ using System.Threading.Tasks;
 
 namespace GraficadorSeñales
 {
-    class SeñalSenoidal
+    class SeñalSenoidal : Señal
     {
         public double Amplitud { get; set; }
         public double Fase { get; set; }
         public double Frecuencia { get; set; }
         
-        //autopro inicializar
-        public List<Muestra> Muestras { get; set; }
-               
 
         public SeñalSenoidal()
         {
             Amplitud = 1.0;
             Fase = 0.0;
             Frecuencia = 1.0;
-            //para que pueda tener elem
+            //para que pueda tener elem nuevos
             Muestras = new List<Muestra>();
+            AmplitudMaxima = 0.0; 
         }
 
         public SeñalSenoidal(double amplitud,
@@ -32,11 +30,12 @@ namespace GraficadorSeñales
             Fase = fase;
             Frecuencia = frecuencia;
             Muestras = new List<Muestra>();
+            AmplitudMaxima = 0.0;
         }
 
         /*TEOREMA DE MUESTREO
          fs = 2fmax + 1*/
-        public double evaluar(double tiempo)
+        override public double evaluar(double tiempo)
         {
             double resultado;
             //la  formula de señal S. comienza hacia arriba

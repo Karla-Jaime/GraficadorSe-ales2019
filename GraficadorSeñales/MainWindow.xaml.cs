@@ -29,41 +29,55 @@ namespace GraficadorSeñales
 
         private void BtnGraficar_Click(object sender, RoutedEventArgs e)
         {
-            
-            //double amplitud = Parse(txtAmplitud.Text);
-            //double fase = double.Parse(txtFase.Text);
-            //double frecuencia = double.Parse(txtFrecuencia.Text);
-
-
+                      
             double frecuenciaMuestreo = double.Parse(txtFrecuenciaMuestreo.Text);
             double tiempoInicial = double.Parse(txtTiempoInicial.Text);
             double tiempoFinal = double.Parse(txtTiempoFinal.Text);
 
-            //Mandar a llamar
-            //SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia);
-            SeñalParabolica señal = new SeñalParabolica();
+           
             //FuncionSigno señal = new FuncionSigno();
+            Señal señal;
 
-            double periodoMuestreo = 1.0 / frecuenciaMuestreo;
+            switch (CbTipoSenal.SelectedIndex)
+            {
+                case 0:
+                    señal = new SeñalParabolica();
+                    break;
+                   
+                case 1://Casteo y luego parse 
+                    double amplitud = double.Parse(
+                    ((ConfiguracionSeñalSenoidal)(panelConfiguracion.Children[0])).txtAmplitud.Text);
 
-            //Declarar la Amplitud Máxima
-            double amplitudMaxima = 0.0;
 
-            //Para borrar la grafica anterior
+                    double fase = double.Parse(
+                    ((ConfiguracionSeñalSenoidal)(panelConfiguracion.Children[0])).txtFase.Text);
+
+                    double frecuencia = double.Parse(
+                    ((ConfiguracionSeñalSenoidal)(panelConfiguracion.Children[0])).txtFrecuencia.Text);
+                    señal = new SeñalSenoidal(amplitud, fase, frecuencia);
+                    break;
+                case 2:
+                    double alpha = double.Parse(
+                        ((ConfiguaracionExponencial)(panelConfiguracion.Children[0])).txtAlpha.Text);
+                    señal = new SeñalExponencial(alpha);
+                    break;
+
+                default:
+                    señal = null;
+                    break;
+            }
+
+            señal.TiempoInicial = tiempoInicial;
+            señal.TiempoFinal = tiempoFinal;
+            señal.FrecuenciaMuestreo = frecuenciaMuestreo;
+
+            señal.construirSeña();
+
+            double amplitudMaxima = señal.AmplitudMaxima;
+
             plnGrafica.Points.Clear();
 
-            //para poder reuperar el valor de la señal 
-            for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
-            {
-                double valorMuestra = señal.evaluar(i);
-                if(Math.Abs(valorMuestra) > amplitudMaxima)
-                {
-                    amplitudMaxima = Math.Abs(valorMuestra);
-                }
-                Muestra muestra = new Muestra(i, señal.evaluar(i));
-                señal.Muestras.Add(muestra);
-
-            }
+            
             //para graficar los puntos
             foreach (Muestra muestra in señal.Muestras)
             {
@@ -98,12 +112,12 @@ namespace GraficadorSeñales
             switch (CbTipoSenal.SelectedIndex)
             {
                 case 0: //Exponencial
-                   
                     break;
                 case 1: //Senoidal
                     panelConfiguracion.Children.Add(new ConfiguracionSeñalSenoidal());
-                    
-
+                    break;
+                case 2:
+                    panelConfiguracion.Children.Add(new ConfiguaracionExponencial());
                     break;
                 default:
                     break;

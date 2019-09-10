@@ -5,31 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GraficadorSeñales
-{ //Agregar herencia de la clase señal
-    class SeñalParabolica : Señal
+{
+    class SeñalExponencial : Señal
     {
-       
-        public SeñalParabolica()
+
+        public SeñalExponencial()
         {
+            Alpha = 0.0;
             Muestras = new List<Muestra>();
             AmplitudMaxima = 0.0;
         }
-        //Para que no piense que es algo completamente nuevo
+
+        public SeñalExponencial(double alpha)
+        {
+            Alpha = alpha;
+            Muestras = new List<Muestra>();
+            AmplitudMaxima = 0.0;
+        }
+
+       
         override public double evaluar(double tiempo)
         {
             double resultado;
-
-            if (tiempo > 0)
-            {
-                resultado = (tiempo * tiempo) / 2.0;
-            }
-            else
-            {
-                resultado = 0.0;
-            }
-
+           
+            resultado = Math.Exp(Alpha * tiempo);
+              
             return resultado;
         }
+
     }
 }
-
