@@ -73,6 +73,7 @@ namespace GraficadorSeñales
                     señal = null;
                     break;
             }
+
              if (CbTipoSenal.SelectedIndex != 3 && señal != null)
             {
                 señal.construirSeña();

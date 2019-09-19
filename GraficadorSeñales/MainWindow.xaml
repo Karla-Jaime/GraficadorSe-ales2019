@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraficadorSeñales"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FFFFF5EA">
+        Title="MainWindow" Height="1079.8" Width="936">
+    <Grid Background="#FFFFF5EA" RenderTransformOrigin="0.504,0.422" Margin="-1,2,1,-2">
         <Grid.RowDefinitions>
-            <RowDefinition Height="134*"/>
-            <RowDefinition Height="285*"/>
+            <RowDefinition Height="231*"/>
+            <RowDefinition Height="818*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="54,10,0,0" TextWrapping="Wrap" Text="Señal Senoidal" VerticalAlignment="Top" FontSize="25" />
+        <TextBlock HorizontalAlignment="Left" Margin="44,17,0,0" TextWrapping="Wrap" Text="Señal Senoidal" VerticalAlignment="Top" FontSize="25" Height="33" Width="161" />
 
-        <TextBlock HorizontalAlignment="Left" Margin="576,19,0,0" TextWrapping="Wrap" Text="Tiempo Inicial" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox x:Name="txtTiempoInicial" HorizontalAlignment="Left" Height="23" Margin="579,54,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="154"/>
-        <TextBlock HorizontalAlignment="Left" Margin="576,81,0,0" TextWrapping="Wrap" Text="Tiempo Final" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox x:Name="txtTiempoFinal" HorizontalAlignment="Left" Height="23" Margin="579,114,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="154" Grid.RowSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="576,2,0,0" TextWrapping="Wrap" Text="Frecuencia de muestro" VerticalAlignment="Top" FontSize="20" Grid.Row="1"/>
-        <TextBox x:Name="txtFrecuenciaMuestreo" HorizontalAlignment="Left" Height="23" Margin="579,37,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
-        <Button x:Name="btnGraficar" Content="GRAFICAR" HorizontalAlignment="Left" Margin="633,65.225,0,0" VerticalAlignment="Top" Width="100"  Height="19" Click="BtnGraficar_Click" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="690,17,0,0" TextWrapping="Wrap" Text="Tiempo Inicial" VerticalAlignment="Top" FontSize="20" Height="27" Width="124"/>
+        <TextBox x:Name="txtTiempoInicial" HorizontalAlignment="Left" Height="23" Margin="694,52,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="154"/>
+        <TextBlock HorizontalAlignment="Left" Margin="690,79,0,0" TextWrapping="Wrap" Text="Tiempo Final" VerticalAlignment="Top" FontSize="20" Height="27" Width="114"/>
+        <TextBox x:Name="txtTiempoFinal" HorizontalAlignment="Left" Height="23" Margin="694,112,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="154"/>
+        <TextBlock HorizontalAlignment="Left" Margin="690,157,0,0" TextWrapping="Wrap" Text="Frecuencia de muestro" VerticalAlignment="Top" FontSize="20" Height="27" Width="200"/>
+        <TextBox x:Name="txtFrecuenciaMuestreo" HorizontalAlignment="Left" Height="23" Margin="690,192,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="154"/>
+        <Button x:Name="btnGraficar" Content="GRAFICAR" HorizontalAlignment="Left" Margin="768,35,0,0" VerticalAlignment="Top" Width="100"  Height="19" Click="BtnGraficar_Click" Grid.Row="1"/>
 
 
         <!--ScrollViewer es un contenedor de otros controladores. Solo puede terner un hijo-->
-        <ScrollViewer x:Name="scrGrafica" HorizontalAlignment="Left" Height="187" Margin="120,88.225,0,0" VerticalAlignment="Top" Width="613" Background="#FFFFEEEE" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Grid.Row="1">
+        <ScrollViewer x:Name="scrGrafica" HorizontalAlignment="Left" Height="237" Margin="191,94,0,0" VerticalAlignment="Top" Width="727" Background="#FFFFEEEE" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Grid.Row="1">
             <!--Para poder visualizar la linea se necesitan las primeras 2 propiedades-->
             <Grid>
                 <Polyline Stroke="Orange"  StrokeThickness="2" Name="plnGrafica" />
@@ -31,16 +31,29 @@
                 <Polyline x:Name="plnEjeY" Stroke="Gray" StrokeThickness="1"/>
             </Grid>
         </ScrollViewer>
-        <TextBlock x:Name="lbllimiteInferior"  HorizontalAlignment="Right" Margin="0,259.225,687,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="95" TextAlignment="Right" Grid.Row="1"/>
-        <TextBlock x:Name="lbllimiteSuperior"  HorizontalAlignment="Right" Margin="0,88.225,682,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="95" TextAlignment="Right" RenderTransformOrigin="2.379,0.625" Grid.Row="1"/>
-        <TextBlock  HorizontalAlignment="Right" Margin="0,171.225,677,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="95" TextAlignment="Right" RenderTransformOrigin="2.379,0.625" Grid.Row="1"/>
-        <Grid x:Name="panelConfiguracion" HorizontalAlignment="Left" Height="198" Margin="278,10,0,0" VerticalAlignment="Top" Width="274" Grid.RowSpan="2"/>
-        
-        <ComboBox x:Name="CbTipoSenal" HorizontalAlignment="Left" Margin="61,55,0,0" VerticalAlignment="Top" Width="197" SelectionChanged="CbTipoSeñal_SelectionChanged">
+        <TextBlock x:Name="lbllimiteInferior"  HorizontalAlignment="Right" Margin="0,311,767,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" TextAlignment="Right" Grid.Row="1" Height="20"/>
+        <TextBlock x:Name="lbllimiteSuperior"  HorizontalAlignment="Right" Margin="0,94,761,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" TextAlignment="Right" RenderTransformOrigin="2.379,0.625" Grid.Row="1" Height="20"/>
+        <TextBlock  HorizontalAlignment="Right" Margin="0,199,755,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" TextAlignment="Right" RenderTransformOrigin="2.379,0.625" Grid.Row="1" Height="20"/>
+        <Grid x:Name="panelConfiguracion" HorizontalAlignment="Left" Height="198" Margin="259,10,0,0" VerticalAlignment="Top" Width="413"/>
+
+        <ComboBox x:Name="CbTipoSenal" HorizontalAlignment="Left" Margin="43,62,0,0" VerticalAlignment="Top" Width="197" SelectionChanged="CbTipoSeñal_SelectionChanged" Height="22">
             <ComboBoxItem>Señal parabolica</ComboBoxItem>
             <ComboBoxItem>Señal senoidal</ComboBoxItem>
             <ComboBoxItem>Señal exponencial</ComboBoxItem>
             <ComboBoxItem>Señal Audio</ComboBoxItem>
         </ComboBox>
+        <ScrollViewer x:Name="scrGraficaResultante" HorizontalAlignment="Left" Height="237" Margin="184,358,0,0" VerticalAlignment="Top" Width="727" Background="#FFFFEEEE" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Grid.Row="1">
+            <!--Para poder visualizar la linea se necesitan las primeras 2 propiedades-->
+            <Grid>
+                <Polyline Stroke="Orange"  StrokeThickness="2" x:Name="plnGraficaResultante" />
+                <Polyline x:Name="plnEjeXResultante" Stroke="Gray" StrokeThickness="1"/>
+                <Polyline x:Name="plnEjeYResultante" Stroke="Gray" StrokeThickness="1"/>
+            </Grid>
+        </ScrollViewer>
+        <TextBlock x:Name="lbllimiteInferiorResulstante"  HorizontalAlignment="Right" Margin="0,575,771,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" TextAlignment="Right" Grid.Row="1" Height="20"/>
+        <TextBlock x:Name="lbllimiteSuperiorResultante"  HorizontalAlignment="Right" Margin="0,358,765,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" TextAlignment="Right" RenderTransformOrigin="2.379,0.625" Grid.Row="1" Height="20"/>
+        <TextBlock  HorizontalAlignment="Right" Margin="0,463,759,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" TextAlignment="Right" RenderTransformOrigin="2.379,0.625" Grid.Row="1" Height="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="44,118,0,0" TextWrapping="Wrap" Text="Operacion" VerticalAlignment="Top" FontSize="16"/>
+        <ComboBox HorizontalAlignment="Left" Margin="44,157,0,0" VerticalAlignment="Top" Width="196"/>
     </Grid>
 </Window>
