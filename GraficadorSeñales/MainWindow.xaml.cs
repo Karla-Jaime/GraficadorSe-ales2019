@@ -37,6 +37,8 @@ namespace GraficadorSeñales
            
             //FuncionSigno señal = new FuncionSigno();
             Señal señal;
+            //Segunda señal
+            Señal señalResultante;
 
             switch (CbTipoSenal.SelectedIndex)
             {
@@ -76,29 +78,46 @@ namespace GraficadorSeñales
 
              if (CbTipoSenal.SelectedIndex != 3 && señal != null)
             {
-                señal.construirSeña();
+               
 
                 señal.TiempoInicial = tiempoInicial;
                 señal.TiempoFinal = tiempoFinal;
                 señal.FrecuenciaMuestreo = frecuenciaMuestreo;
+                señal.construirSeña();
             }
-          
 
+            switch (cbOperacion.SelectedIndex)
+            {
+                case 0://Escala de Amplitud
+                    double factorEscala = double.Parse(((OperacionEscalaAmplitud)(panelConfiguracion.Children[0])).txtFactorEscala.Text);
+                    señalResultante = new Señal.escalarAmplitud(señal, factorEscala); 
+                    break;
+                default:
+                    señalResultante = null;
+                    break;
+            }
             
 
             double amplitudMaxima = señal.AmplitudMaxima;
+            double amplitudMaximaResultado = señalResultante.AmplitudMaxima;
 
             plnGrafica.Points.Clear();
-
+            plnGraficaResultante.Points.Clear();
             
             //para graficar los puntos
             foreach (Muestra muestra in señal.Muestras)
             {
                 plnGrafica.Points.Add(adaptarCoordenadas(muestra.X, muestra.Y, tiempoInicial,amplitudMaxima));
             }
-
-            lbllimiteSuperior.Text = amplitudMaxima.ToString();
-            lbllimiteInferior.Text = "-" + amplitudMaxima.ToString();
+            foreach(Muestra muestra in señalResultante.Muestras)
+            {
+                plnGraficaResultante.Points.Add(adaptarCoordenadas(muestra.X, muestra.Y, tiempoInicial, amplitudMaximaResultado));
+            }
+            lbllimiteSuperior.Text = amplitudMaxima.ToString("F");
+            lbllimiteInferior.Text = "-" + amplitudMaxima.ToString("F");
+            lbllimiteSuperiorResultante.Text = amplitudMaximaResultado.ToString("F");
+            lbllimiteInferiorResulstante.Text = "-" + amplitudMaximaResultado.ToString("F");
+           
 
             plnEjeX.Points.Clear(); 
             plnEjeX.Points.Add(adaptarCoordenadas(tiempoInicial, 0.0, tiempoInicial, amplitudMaxima));
@@ -108,6 +127,14 @@ namespace GraficadorSeñales
             plnEjeY.Points.Add(adaptarCoordenadas(0.0, amplitudMaxima,tiempoInicial, amplitudMaxima));
             plnEjeY.Points.Add(adaptarCoordenadas(0.0, amplitudMaxima * -1, tiempoInicial, amplitudMaxima));
 
+            //RESULTADO /2da grafica/
+            plnEjeXResultante.Points.Clear();
+            plnEjeXResultante.Points.Add(adaptarCoordenadas(tiempoInicial, 0.0, tiempoInicial, amplitudMaximaResultado));
+            plnEjeXResultante.Points.Add(adaptarCoordenadas(tiempoFinal, 0.0, tiempoInicial, amplitudMaximaResultado));
+
+            plnEjeYResultante.Points.Clear();
+            plnEjeYResultante.Points.Add(adaptarCoordenadas(0.0, amplitudMaximaResultado, tiempoInicial, amplitudMaximaResultado));
+            plnEjeYResultante.Points.Add(adaptarCoordenadas(0.0, amplitudMaximaResultado * -1, tiempoInicial, amplitudMaximaResultado));
         }
 
         //Nueva funcion 
@@ -135,6 +162,33 @@ namespace GraficadorSeñales
                 case 3:
                     panelConfiguracion.Children.Add(new ConfiguracionAudio());
                     break;
+                default:
+                    break;
+
+            }
+        }
+
+        private void CbOperacion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            panelConfiguracionOperacion.Children.Clear();
+
+            switch (cbOperacion.SelectedIndex)
+            {
+                case 0:
+                    panelConfiguracionOperacion.Children.Add(new OperacionEscalaAmplitud());
+                    break;
+                /*case 1:
+                    panelConfiguracionOperacion.Children.Add(new OperacionAdicion());
+                    break;*/
+                /*case 2:
+               panelConfiguracionOperacion.Children.Add(new OperacionDesplazamientoTiempo());
+               break;*/
+                /*case 3:
+              panelConfiguracionOperacion.Children.Add(new OperacionEscalaTiempo());
+              break;*/
+                /*case 4:
+              panelConfiguracionOperacion.Children.Add(new OperacionInversoTiempo());
+              break;*/
                 default:
                     break;
 
